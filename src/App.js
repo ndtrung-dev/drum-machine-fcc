@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import $ from "jquery";
 import "./App.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFreeCodeCamp } from "@fortawesome/free-brands-svg-icons";
 
 //audio bank provided by freeCodeCamp
 const bankOne = [
@@ -31,6 +33,7 @@ const bankOne = [
   {
     keyCode: 83,
     keyTrigger: "S",
+
     id: "Clap",
     url: "https://s3.amazonaws.com/freecodecamp/drums/Heater-6.mp3",
   },
@@ -119,11 +122,11 @@ const bankTwo = [
 // const
 const BANKONE = "BANK ONE";
 const BANKTWO = "BANK TWO";
-const DEFAULT_VOLUMN = 20;
+const DEFAULT_VOLUME = 0.2;
 
 function App() {
   const [bank, setBank] = useState({ no: BANKONE, bank: bankOne });
-  const [volumn, setVolumn] = useState(DEFAULT_VOLUMN);
+  const [volume, setVolume] = useState(DEFAULT_VOLUME);
   const [displayKey, setDisplayKey] = useState("");
 
   function hanldeChangeBank(e) {
@@ -143,13 +146,27 @@ function App() {
         item.id.toLowerCase() == e.target.id?.toLowerCase() || // check click parent
         item.id.toLowerCase() == e.target.parentNode.id?.toLowerCase() // check click child
     );
-    console.log(e.target.parentNode);
 
     if (targeted !== -1) {
       const selector = `audio#${bank.bank[targeted].keyTrigger}`;
+      $(selector)[0].volume = volume;
       $(selector)[0].play();
       setDisplayKey(bank.bank[targeted].id);
     }
+  }
+
+  function handleChangeVol(e) {
+    setVolume(e.target.value);
+  }
+
+  function handleOnPlay(e) {
+    // console.log(e.target.parentNode.classList.contains("playing"));
+    !e.target.parentNode.classList.contains("playing") &&
+      e.target.parentNode.classList.add("playing");
+  }
+  function handleOnPause(e) {
+    e.target.parentNode.classList.contains("playing") &&
+      e.target.parentNode.classList.remove("playing");
   }
 
   useEffect(() => {
@@ -157,13 +174,28 @@ function App() {
     return () => {
       window.removeEventListener("keypress", handlePlayAudio);
     };
-  }, [displayKey]);
+  }, [displayKey, volume]);
 
   return (
     <div className="App container">
       <div id="drum-machine" className="container">
+        <div className="container container_h" id="drum-machine__label">
+          <h3>drum-machine-fcc</h3>
+          <FontAwesomeIcon icon={faFreeCodeCamp} />
+        </div>
         <div id="display" className="container">
           <p>{displayKey}</p>
+        </div>
+        <div id="volumn-selector__wrapper" className="container">
+          <input
+            id="volumn-selector"
+            type="range"
+            value={volume}
+            min={0}
+            max={1}
+            step={0.01}
+            onChange={handleChangeVol}
+          />
         </div>
         <div id="bank-selector" className="container">
           <div id="bank-selector__title">Bank</div>
@@ -188,6 +220,9 @@ function App() {
                 src={item.url}
                 className="clip"
                 preload="auto"
+                onPlay={handleOnPlay}
+                onPause={handleOnPause}
+                // controls
               ></audio>
               <p>{item.keyTrigger}</p>
             </div>

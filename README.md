@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+# drum-machine-fcc
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a project to fulfiled _Front End Development Libraries_ Course provided by freeCodeCamp.
 
-## Available Scripts
+Goals: Create a random quote generator similar to this: https://drum-machine.freecodecamp.rocks/.
 
-In the project directory, you can run:
+In this project, the tech stack was used ReactJS and SCSS. <br>
+Check out the live demo [here](https://ndtrung-dev.github.io/drum-machine-fcc).
 
-### `npm start`
+## Requirements:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Tech stacks:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+> Using any mix of HTML, Javascript, CSS, Bootstrap, SASS, React, Redux, and jQuery.<br>
+> Andditional tech unlisted are not recommended.
 
-### `npm test`
+### User story:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+> 1. I should be able to see an outer container with a corresponding _id="drum-machine"_ that contains all other elements.
+>
+> 1. Within #drum-machine I can see an element with a corresponding _id="display"_.
+>
+> 1. Within _#drum-machine_ I can see 9 clickable drum pad elements, each with a class name of drum-pad, a unique id that describes the audio clip the drum pad will be set up to trigger, and an inner text that corresponds to one of the following keys on the keyboard: _Q_, _W_, _E_, _A_, _S_, _D_, _Z_, _X_, _C_. The drum pads MUST be in this order.
+>
+> 1. Within each _.drum-pad_, there should be an HTML5 audio element which has a _src_ attribute pointing to an audio clip, a class name of _clip_, and an id corresponding to the inner text of its parent _.drum-pad_ (e.g. id="Q", id="W", id="E" etc.).
+>
+> 1. When I click on a _.drum-pad_ element, the audio _clip_ contained in its child audio element should be triggered.
+>
+> 1. When I press the trigger key associated with each _.drum-pad_, the audio clip contained in its child audio element should be triggered (e.g. pressing the Q key should trigger the drum pad which contains the string Q, pressing the W key should trigger the drum pad which contains the string W, etc.).
+>
+> 1. When a _.drum-pad_ is triggered, a string describing the associated audio clip is displayed as the inner text of the _#display_ element (each string must be unique).
 
-### `npm run build`
+### Testing tools
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<em>FCC Testing CDN</em> (https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js) is provided by freeCodeCamp
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Result
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+All checkpoint passed!
 
-### `npm run eject`
+<b>Note:</b><br> - <code>bankOne</code> and <code>bankTwo</code> is retrieved from provided example.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Source code uploaded to [github](https://github.com/ndtrung-dev/drum-machine-fcc).
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[Live demo](https://ndtrung-dev.github.io/drum-machine-fcc) is uploaded to github using <code>gh-pages</code>. <em>FCC Testing CDN</em> was embedded. Select <code>drum-machine</code> option from dropdown menu to verify the result.
